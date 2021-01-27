@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include "Point.h"
+#include "arbre.h"
+
+
+void insertion (tree ** node, struct point p0){
+
+	if(*node==NULL) // Si le nœud n'existe pas, on doit le créer.
+	{
+		// Création de la racine
+
+			*node=(tree*) malloc(sizeof(tree));
+			(*node)-> data=p0;
+			(*node)-> gauche=NULL;
+			(*node)-> droite=NULL;
+	}
+	//Une racine c'est deja un nœud, donc on peut
+	else {// Création d'un chemin(node) gauche droite
+
+		if(p0>(*node)->data){
+			insertion(&(*node)->gauche,p0); // chemin de gauche
+		}else {
+			insertion(&(*node)->droite,p0); // chemin de droite
+		}
+
+	}
+}
+
+/
